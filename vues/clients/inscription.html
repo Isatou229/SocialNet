@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscription — SocialNet ESGIS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<section class="auth-view">
+  <div class="auth-card">
+    <div class="brand"><span class="dot"></span><span class="word">Social<b>Net</b></span></div>
+    <p class="auth-sub">Crée ton compte étudiant</p>
+
+    <form id="form-register">
+      <div class="field"><label>Nom</label><input type="text" id="reg-nom" required></div>
+      <div class="field"><label>Prénom</label><input type="text" id="reg-prenom" required></div>
+      <div class="field"><label>Email</label><input type="email" id="reg-email" placeholder="toi@esgis.bj" required></div>
+      <div class="field"><label>Mot de passe</label><input type="password" id="reg-password" minlength="6" required></div>
+      <div class="field"><label>Confirmation du mot de passe</label><input type="password" id="reg-password-confirm" minlength="6" required></div>
+      <button class="btn-primary" type="submit">Créer mon compte</button>
+      <p class="form-msg" id="register-msg"></p>
+    </form>
+
+    <div class="auth-links">
+      <a href="connexion.html">J'ai déjà un compte</a>
+      <span></span>
+    </div>
+  </div>
+</section>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/auth.js"></script>
+</body>
+</html>

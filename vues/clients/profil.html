@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil — SocialNet ESGIS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<div id="navbar-mount"></div>
+
+<div class="layout layout-2col">
+  <aside class="sidebar-left">
+    <div class="card profile-mini">
+      <img class="avatar" id="mini-photo" src="" alt="">
+      <b id="mini-name"></b>
+      <span>ESGIS Cotonou</span>
+    </div>
+    <div class="card shortcut-list">
+      <a href="profil.html"><span class="ic"></span>Mon profil</a>
+      <a href="accueil.html"><span class="ic"></span>Fil d'actualité</a>
+      <a href="chat.html"><span class="ic"></span>Messages</a>
+      <a href="parametres.html"><span class="ic"></span>Paramètres</a>
+    </div>
+  </aside>
+
+  <main>
+    <div class="profile-card">
+      <div class="profile-cover"></div>
+      <div class="profile-info">
+        <img class="avatar" id="profile-photo" src="" alt="">
+        <div class="txt"><b id="profile-name"></b><span id="profile-bio"></span></div>
+        <button class="edit-btn hidden" id="profile-edit-btn" onclick="toggleEditForm()">Modifier le profil</button>
+      </div>
+      <div class="profile-stats">
+        <span><b id="profile-nb-posts">0</b> publications</span>
+        <span><b id="profile-nb-amis">0</b> amis</span>
+      </div>
+    </div>
+
+    <div class="card edit-form hidden" id="edit-form-card">
+      <p class="section-title">Modifier mes informations</p>
+      <form id="form-edit-profile">
+        <div class="field-row">
+          <div class="field"><label>Nom</label><input type="text" id="edit-nom" required></div>
+          <div class="field"><label>Prénom</label><input type="text" id="edit-prenom" required></div>
+        </div>
+        <div class="field"><label>Bio</label><textarea id="edit-bio" rows="2"></textarea></div>
+        <div class="field"><label>Photo de profil</label><input type="file" id="edit-photo" accept="image/*"></div>
+        <button class="btn-primary" type="submit" style="width:auto;padding:10px 22px;">Enregistrer</button>
+      </form>
+    </div>
+
+    <div id="feed-container">
+      <div class="card empty-state">Chargement des publications...</div>
+    </div>
+  </main>
+</div>
+
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/feed.js"></script>
+<script src="../../assets/js/profile.js"></script>
+<script>
+  const currentUser = requireAuth();
+  if (currentUser) {
+    mountNavbar('profil');
+    const photo = currentUser.photo ? '../../' + currentUser.photo : 'https://api.dicebear.com/9.x/avataaars/svg?seed=' + encodeURIComponent(currentUser.prenom);
+    document.getElementById('mini-photo').src = photo;
+    document.getElementById('mini-name').textContent = currentUser.prenom + ' ' + currentUser.nom;
+  }
+</script>
+</body>
+</html>

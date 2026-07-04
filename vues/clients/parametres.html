@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paramètres — SocialNet ESGIS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<div id="navbar-mount"></div>
+
+<div class="layout layout-2col">
+  <aside class="sidebar-left">
+    <div class="card profile-mini">
+      <img class="avatar" id="mini-photo" src="" alt="">
+      <b id="mini-name"></b>
+      <span>ESGIS Cotonou</span>
+    </div>
+    <div class="card shortcut-list">
+      <a href="profil.html"><span class="ic"></span>Mon profil</a>
+      <a href="accueil.html"><span class="ic"></span>Fil d'actualité</a>
+      <a href="chat.html"><span class="ic"></span>Messages</a>
+      <a href="parametres.html"><span class="ic"></span>Paramètres</a>
+    </div>
+  </aside>
+
+  <main>
+    <div class="card edit-form">
+      <p class="section-title">Modifier mon mot de passe</p>
+      <form id="form-change-password">
+        <div class="field"><label>Ancien mot de passe</label><input type="password" id="pwd-ancien" required></div>
+        <div class="field"><label>Nouveau mot de passe</label><input type="password" id="pwd-nouveau" minlength="6" required></div>
+        <div class="field"><label>Confirmation</label><input type="password" id="pwd-confirm" minlength="6" required></div>
+        <button class="btn-primary" type="submit" style="width:auto;padding:10px 22px;">Mettre à jour</button>
+        <p class="form-msg" id="pwd-msg"></p>
+      </form>
+    </div>
+
+    <div class="card edit-form" style="margin-top:14px;">
+      <p class="section-title">Mes informations</p>
+      <p style="font-size:13px;color:var(--ink-soft);">Pour modifier ton nom, ta bio ou ta photo, rends-toi sur ton <a href="profil.html" style="color:var(--teal);font-weight:700;">profil</a>.</p>
+    </div>
+  </main>
+</div>
+
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/profile.js"></script>
+<script>
+  const currentUser = requireAuth();
+  if (currentUser) {
+    mountNavbar('parametres');
+    const photo = currentUser.photo ? '../../' + currentUser.photo : 'https://api.dicebear.com/9.x/avataaars/svg?seed=' + encodeURIComponent(currentUser.prenom);
+    document.getElementById('mini-photo').src = photo;
+    document.getElementById('mini-name').textContent = currentUser.prenom + ' ' + currentUser.nom;
+  }
+</script>
+</body>
+</html>

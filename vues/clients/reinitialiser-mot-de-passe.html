@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Réinitialiser le mot de passe — SocialNet ESGIS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<section class="auth-view">
+  <div class="auth-card">
+    <div class="brand"><span class="dot"></span><span class="word">Social<b>Net</b></span></div>
+    <p class="auth-sub">Choisis un nouveau mot de passe</p>
+
+    <form id="form-reset">
+      <div class="field"><label>Nouveau mot de passe</label><input type="password" id="reset-password" minlength="6" required></div>
+      <div class="field"><label>Confirmation</label><input type="password" id="reset-password-confirm" minlength="6" required></div>
+      <button class="btn-primary" type="submit">Valider</button>
+      <p class="form-msg" id="reset-msg"></p>
+    </form>
+
+    <div class="auth-links">
+      <a href="connexion.html">← Retour à la connexion</a>
+      <span></span>
+    </div>
+  </div>
+</section>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/auth.js"></script>
+</body>
+</html>

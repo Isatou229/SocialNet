@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Messages — SocialNet ESGIS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<div id="navbar-mount"></div>
+
+<div class="layout layout-2col">
+  <aside class="sidebar-left">
+    <div class="card profile-mini">
+      <img class="avatar" id="mini-photo" src="" alt="">
+      <b id="mini-name"></b>
+      <span>ESGIS Cotonou</span>
+    </div>
+    <div class="card shortcut-list">
+      <a href="profil.html"><span class="ic"></span>Mon profil</a>
+      <a href="accueil.html"><span class="ic"></span>Fil d'actualité</a>
+      <a href="chat.html"><span class="ic"></span>Messages</a>
+      <a href="parametres.html"><span class="ic"></span>Paramètres</a>
+    </div>
+  </aside>
+
+  <main>
+    <div class="msg-shell">
+      <div class="conv-list" id="conv-list">
+        <div class="empty-state">Chargement...</div>
+      </div>
+      <div id="chat-empty" class="chat-window" style="align-items:center;justify-content:center;">
+        <p class="empty-state">Sélectionne une conversation pour commencer à discuter.</p>
+      </div>
+      <div id="chat-window" class="chat-window hidden">
+        <div class="chat-head">
+          <img class="avatar" id="chat-photo" src="" alt="">
+          <b id="chat-name"></b>
+        </div>
+        <div class="chat-body" id="chat-body"></div>
+        <div class="chat-input">
+          <input type="file" id="chat-input-image" accept="image/*" title="Envoyer une image">
+          <input type="text" id="chat-input-text" placeholder="Écrire un message...">
+          <button id="btn-send-chat">Envoyer</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/chat.js"></script>
+<script>
+  const currentUser = requireAuth();
+  if (currentUser) {
+    mountNavbar('chat');
+    const photo = currentUser.photo ? '../../' + currentUser.photo : 'https://api.dicebear.com/9.x/avataaars/svg?seed=' + encodeURIComponent(currentUser.prenom);
+    document.getElementById('mini-photo').src = photo;
+    document.getElementById('mini-name').textContent = currentUser.prenom + ' ' + currentUser.nom;
+  }
+</script>
+</body>
+</html>

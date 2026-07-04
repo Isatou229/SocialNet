@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SocialNet ESGIS</title>
+</head>
+<body>
+<script>
+  const user = sessionStorage.getItem('user');
+  window.location.href = user ? 'vues/clients/accueil.html' : 'vues/clients/connexion.html';
+</script>
+<noscript>
+  <p>JavaScript est requis. <a href="vues/clients/connexion.html">Cliquer ici pour continuer</a>.</p>
+</noscript>
+</body>
+</html>

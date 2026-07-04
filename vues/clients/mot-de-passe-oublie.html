@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mot de passe oublié — SocialNet ESGIS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<section class="auth-view">
+  <div class="auth-card">
+    <div class="brand"><span class="dot"></span><span class="word">Social<b>Net</b></span></div>
+    <p class="auth-sub">Réinitialiser ton mot de passe</p>
+
+    <form id="form-forgot">
+      <div class="field">
+        <label>Email de ton compte</label>
+        <input type="email" id="forgot-email" placeholder="toi@esgis.bj" required>
+      </div>
+      <button class="btn-primary" type="submit">Recevoir le lien de réinitialisation</button>
+      <p class="form-msg" id="forgot-msg"></p>
+    </form>
+
+    <div class="auth-links">
+      <a href="connexion.html">← Retour à la connexion</a>
+      <span></span>
+    </div>
+  </div>
+</section>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/auth.js"></script>
+</body>
+</html>

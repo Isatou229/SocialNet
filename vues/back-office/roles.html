@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rôles — Back-office SocialNet ESGIS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<div class="admin-shell">
+  <div id="navbar-mount"></div>
+  <main class="admin-main">
+    <h2 class="admin-title">Rôles</h2>
+    <p class="admin-sub">Attribution des droits modérateur / administrateur (réservé à l'administrateur)</p>
+
+    <table>
+      <thead><tr><th>Nom</th><th>Rôle actuel</th><th>Changer le rôle</th></tr></thead>
+      <tbody id="roles-tbody"><tr><td colspan="3">Chargement...</td></tr></tbody>
+    </table>
+  </main>
+</div>
+
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/admin.js"></script>
+<script>
+  const currentUser = requireAdminAuth();
+  if (currentUser) {
+    if (currentUser.role !== 'admin') {
+      document.querySelector('.admin-main').innerHTML = '<h2 class="admin-title">Accès refusé</h2><p class="admin-sub">Cette page est réservée à l\'administrateur.</p>';
+      mountAdminNavbar('roles');
+    } else {
+      mountAdminNavbar('roles');
+      loadAdminRoles();
+    }
+  }
+</script>
+</body>
+</html>

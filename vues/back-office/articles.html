@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications — Back-office SocialNet ESGIS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<div class="admin-shell">
+  <div id="navbar-mount"></div>
+  <main class="admin-main">
+    <h2 class="admin-title">Publications</h2>
+    <p class="admin-sub">Modération du contenu publié sur la plateforme</p>
+
+    <table>
+      <thead><tr><th>Auteur</th><th>Extrait</th><th>Date</th><th></th></tr></thead>
+      <tbody id="posts-tbody"><tr><td colspan="4">Chargement...</td></tr></tbody>
+    </table>
+  </main>
+</div>
+
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/admin.js"></script>
+<script>
+  const currentUser = requireAdminAuth();
+  if (currentUser) {
+    mountAdminNavbar('articles');
+    loadAdminPosts();
+  }
+</script>
+</body>
+</html>

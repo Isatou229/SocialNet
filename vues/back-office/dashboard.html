@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Back-office SocialNet ESGIS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<div class="admin-shell">
+  <div id="navbar-mount"></div>
+  <main class="admin-main">
+    <h2 class="admin-title">Dashboard</h2>
+    <p class="admin-sub">Vue d'ensemble de la plateforme</p>
+
+    <div class="stat-grid">
+      <div class="stat-card"><span>Utilisateurs</span><b id="stat-users">0</b></div>
+      <div class="stat-card"><span>Publications</span><b id="stat-posts">0</b></div>
+      <div class="stat-card"><span>Commentaires</span><b id="stat-comments">0</b></div>
+      <div class="stat-card"><span>Messages</span><b id="stat-messages">0</b></div>
+    </div>
+
+    <div class="chart-card">
+      <h4>Inscriptions par mois</h4>
+      <div class="bars" id="bars-inscriptions"></div>
+    </div>
+  </main>
+</div>
+
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/admin.js"></script>
+<script>
+  const currentUser = requireAdminAuth();
+  if (currentUser) {
+    mountAdminNavbar('dashboard');
+    loadDashboard();
+  }
+</script>
+</body>
+</html>

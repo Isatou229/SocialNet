@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accueil — SocialNet ESGIS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<div id="navbar-mount"></div>
+
+<div class="layout">
+  <aside class="sidebar-left">
+    <div class="card profile-mini">
+      <img class="avatar" id="mini-photo" src="" alt="">
+      <b id="mini-name"></b>
+      <span>ESGIS Cotonou</span>
+    </div>
+    <div class="card shortcut-list">
+      <a href="profil.html"><span class="ic"></span>Mon profil</a>
+      <a href="accueil.html"><span class="ic"></span>Fil d'actualité</a>
+      <a href="chat.html"><span class="ic"></span>Messages</a>
+      <a href="parametres.html"><span class="ic"></span>Paramètres</a>
+    </div>
+  </aside>
+
+  <main>
+    <div class="card composer">
+      <div class="composer-top">
+        <img class="avatar" id="composer-photo" src="" alt="">
+        <input type="text" id="composer-text" placeholder="Quoi de neuf ?">
+      </div>
+      <div class="composer-extra">
+        <input type="file" id="composer-image" accept="image/*">
+      </div>
+      <div class="composer-actions"><button onclick="createPost()">Publier</button></div>
+    </div>
+
+    <div id="feed-container">
+      <div class="card empty-state">Chargement du fil d'actualité...</div>
+    </div>
+  </main>
+
+  <aside class="sidebar-right">
+    <div class="card">
+      <p class="section-title">Demandes d'amis</p>
+      <div id="friend-requests-mini"><a href="amis.html" style="font-size:12px;color:var(--teal);font-weight:700;">Voir sur la page Amis →</a></div>
+    </div>
+  </aside>
+</div>
+
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/feed.js"></script>
+<script>
+  const currentUser = requireAuth();
+  if (currentUser) {
+    mountNavbar('accueil');
+    const photo = currentUser.photo ? '../../' + currentUser.photo : 'https://api.dicebear.com/9.x/avataaars/svg?seed=' + encodeURIComponent(currentUser.prenom);
+    document.getElementById('mini-photo').src = photo;
+    document.getElementById('composer-photo').src = photo;
+    document.getElementById('mini-name').textContent = currentUser.prenom + ' ' + currentUser.nom;
+    loadFeed();
+  }
+</script>
+</body>
+</html>

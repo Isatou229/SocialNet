@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Back-office — SocialNet ESGIS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<section class="auth-view" style="background:radial-gradient(circle at 15% 20%, rgba(27,31,59,.08) 0%, transparent 45%), radial-gradient(circle at 85% 80%, var(--teal-soft) 0%, transparent 45%), var(--bg);">
+  <div class="auth-card">
+    <div class="brand"><span class="dot"></span><span class="word">Social<b>Net</b></span></div>
+    <p class="auth-sub">Back-office — Administration / Modération</p>
+
+    <form id="form-admin-login">
+      <div class="field"><label>Email</label><input type="email" id="admin-email" required></div>
+      <div class="field"><label>Mot de passe</label><input type="password" id="admin-password" required></div>
+      <button class="btn-primary" type="submit">Se connecter</button>
+      <p class="form-msg" id="admin-login-msg"></p>
+    </form>
+
+    <div class="auth-links">
+      <a href="../clients/connexion.html">← Espace utilisateur classique</a>
+      <span></span>
+    </div>
+  </div>
+</section>
+
+<script src="../../assets/js/common.js"></script>
+<script>
+  document.getElementById('form-admin-login').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('admin-email').value.trim();
+    const mot_de_passe = document.getElementById('admin-password').value;
+    const res = await apiFetch('/admin/login.php', { method: 'POST', body: { email, mot_de_passe } });
+    if (res.success) {
+      setCurrentUser(res.user, res.token);
+      window.location.href = 'dashboard.html';
+    } else {
+      const el = document.getElementById('admin-login-msg');
+      el.textContent = res.message;
+      el.className = 'form-msg error';
+    }
+  });
+</script>
+</body>
+</html>
