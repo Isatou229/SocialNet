@@ -29,7 +29,7 @@
   <main>
     <div class="card edit-form">
       <p class="section-title">Modifier mon mot de passe</p>
-      <form id="form-change-password">
+      <form id="form-change-password" onsubmit="submitPasswordChange(event)">
         <div class="field"><label>Ancien mot de passe</label><input type="password" id="pwd-ancien" required></div>
         <div class="field"><label>Nouveau mot de passe</label><input type="password" id="pwd-nouveau" minlength="6" required></div>
         <div class="field"><label>Confirmation</label><input type="password" id="pwd-confirm" minlength="6" required></div>
@@ -46,6 +46,7 @@
 </div>
 
 <script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/auth.js"></script>
 <script src="../../assets/js/profile.js"></script>
 <script>
   const currentUser = requireAuth();

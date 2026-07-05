@@ -69,8 +69,12 @@ async function submitPasswordChange(e) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (!document.getElementById('profile-name')) return;
-  loadProfile();
-  document.getElementById('form-edit-profile')?.addEventListener('submit', submitProfileEdit);
+  // Charger le profil si nous sommes sur profil.html
+  if (document.getElementById('profile-name')) {
+    loadProfile();
+    document.getElementById('form-edit-profile')?.addEventListener('submit', submitProfileEdit);
+  }
+  
+  // Attacher le listener de changement de mot de passe (indépendant)
   document.getElementById('form-change-password')?.addEventListener('submit', submitPasswordChange);
 });

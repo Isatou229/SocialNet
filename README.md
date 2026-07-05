@@ -63,22 +63,22 @@ dans `/emails_log/` pour pouvoir être ouvert et présenté tel quel à l'oral.
 | Modérateur    | modo@socialnet.test     | Test1234     |
 | Utilisateur   | user@socialnet.test     | Test1234     |
 
-Connexion utilisateur : `vues/clients/connexion.html`
-Connexion back-office : `vues/back-office/login-admin.html`
+Connexion utilisateur : `SocialNet/vues/clients/connexion.html`
+Connexion back-office : `SocialNet/vues/back-office/login-admin.html`
 
 ## 7. Groupe
 
-- Numéro de groupe : _à compléter_
-- Membres : _à compléter (Nom Prénom — rôle/tâches)_
-- Lien du dépôt GitHub/GitLab : _à compléter_
+- Numéro de groupe : Groupe1
+- Lien du dépôt GitHub/GitLab : https://github.com/VxOverflow/SocialNet.git
 
 ## 8. Tâches réalisées par membre
 
-| Membre | Tâches |
-|--------|--------|
-| _Nom 1_ | Authentification, emails HTML, gestion des sessions |
-| _Nom 2_ | Publications, likes, commentaires |
-| _Nom 3_ | Gestion des amis, profils utilisateurs |
-| _Nom 4_ | Messagerie, back-office, dashboard |
+ ATIKE Isatou -> gestion des pages d'authentification des utlisateurs et des admins emails HTML, gestion des sessions de connexions
 
-_(à adapter selon la répartition réelle et les commits de chacun sur le dépôt Git)_
+ BAH Hawaou -> Publications (textes + images), likes, commentaires , creation de la base de données, gestion du fil d'actualité, fonctionnalité du changement de mot de passe 
+
+ TOGBE Hamed -> Gestion des amis(envois des invitations et confirmations), profils utilisateurs, gestion de la page profil, changement d'images et modif des infos du profil
+
+ BANDA BONI Vianney -> Messagerie en temps reel des messages (sans rechargement), back-office, dashboard, correction des bugs identifiés
+
+
