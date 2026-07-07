@@ -4,26 +4,27 @@
  * Inscription d'un nouvel utilisateur.
  * Méthode : POST (JSON) { nom, prenom, email, mot_de_passe, confirmation }
  */
-
+//Inportation des fichiers de configurations
 require_once __DIR__ . '/../../config.php';
 require_once __DIR__ . '/../../includes/functions.php';
 require_once __DIR__ . '/../../includes/mailer.php';
-
+//verification de la méthode utilisee par le formulaire
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     json_response(['success' => false, 'message' => 'Méthode non autorisée'], 405);
 }
-
+//recup des donnee d$json envoyee par l'api et conversion des donnes en php
 $data = get_json_body();
-
+// attribution de variable
 $nom = sanitize($data['nom'] ?? '');
 $prenom = sanitize($data['prenom'] ?? '');
 $email = trim($data['email'] ?? '');
 $motDePasse = $data['mot_de_passe'] ?? '';
 $confirmation = $data['confirmation'] ?? '';
-
+//verif de securité
 if (!$nom || !$prenom || !$email || !$motDePasse) {
     json_response(['success' => false, 'message' => 'Tous les champs sont obligatoires'], 400);
 }
+//verification de la validité dune adresse mail 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     json_response(['success' => false, 'message' => 'Adresse email invalide'], 400);
 }
@@ -33,15 +34,15 @@ if (strlen($motDePasse) < 6) {
 if ($motDePasse !== $confirmation) {
     json_response(['success' => false, 'message' => 'Les mots de passe ne correspondent pas'], 400);
 }
-
+// requete pour verifier si l'email est deja prensent dans la table users 
 $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
 $stmt->execute([$email]);
 if ($stmt->fetch()) {
     json_response(['success' => false, 'message' => 'Cet email est déjà utilisé'], 409);
 }
-
+//hashage du mot de passe 
 $hash = password_hash($motDePasse, PASSWORD_DEFAULT);
-
+//insertion en base
 $stmt = $pdo->prepare(
     "INSERT INTO users (nom, prenom, email, mot_de_passe, role, date_creation)
      VALUES (?, ?, ?, ?, 'user', NOW())"
